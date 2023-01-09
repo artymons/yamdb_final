@@ -51,6 +51,7 @@ jobs:
           # Пуш образа в Docker Hub
           uses: docker/build-push-action@v2
           with:
+            context: ./api_yamdb/
             push: true
             tags: artymons/yamdb_final:latest
 
@@ -71,14 +72,3 @@ jobs:
             #остановка всех контейнеров
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker run --rm -d -p 5000:5000 artymons/yamdb_final
-
-  send_message:
-  runs-on: ubuntu-latest
-  needs: deploy
-  steps:
-  - name: send message
-    uses: appleboy/telegram-action@master
-    with:
-      to: ${{ secrets.TELEGRAM_TO }}
-      token: ${{ secrets.TELEGRAM_TOKEN }}
-      message: ${{ github.workflow }} успешно выполнен!
