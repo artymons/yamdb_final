@@ -29,7 +29,7 @@ jobs:
         python -m flake8
         # запустить написанные разработчиком тесты
         cd ../
-        python pytest
+        pytest
 
   build_and_push_to_docker_hub:
       name: Push Docker image to Docker Hub
