@@ -177,8 +177,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         comment_id = self.kwargs.get("comment_id")
         if comment_id:
-            comment = get_object_or_404(Comment, pk=comment_id)
-            return comment
+            return get_object_or_404(Comment, pk=comment_id)
         review_id = self.kwargs.get("review_id")
         review = get_object_or_404(Review, pk=review_id)
         return review.comments.all()
