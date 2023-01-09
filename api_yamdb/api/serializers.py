@@ -1,20 +1,12 @@
 import datetime as dt
 
 from django.contrib.auth.tokens import default_token_generator
-from rest_framework import serializers
-from rest_framework.validators import UniqueValidator
-from rest_framework.relations import SlugRelatedField
 from django.shortcuts import get_object_or_404
+from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
-
-from reviews.models import (
-    User,
-    Categories,
-    Genres,
-    Title,
-    Review,
-    Comment,
-)
+from rest_framework.relations import SlugRelatedField
+from rest_framework.validators import UniqueValidator
+from reviews.models import Categories, Comment, Genres, Review, Title, User
 
 
 class CategoriesSerializer(serializers.ModelSerializer):

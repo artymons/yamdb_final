@@ -1,50 +1,24 @@
-from django.db.models import Avg
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
+from django.db.models import Avg
 from django.shortcuts import get_object_or_404
-from django_filters.rest_framework import (
-    DjangoFilterBackend,
-    FilterSet,
-    NumberFilter,
-    CharFilter,
-    AllValuesFilter
-)
-from rest_framework import (
-    filters,
-    mixins,
-    permissions,
-    status,
-    viewsets
-)
+from django_filters.rest_framework import (AllValuesFilter, CharFilter,
+                                           DjangoFilterBackend, FilterSet,
+                                           NumberFilter)
+from rest_framework import filters, mixins, permissions, status, viewsets
 from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken
-from reviews.models import User, Review, Comment
+from reviews.models import Categories, Comment, Genres, Review, Title, User
 
-from .permissions import (
-    IsAdmin,
-    IsAdminModeratorOwnerOrReadOnly,
-    IsAdminOrReadOnly
-)
-from .serializers import (
-    CategoriesSerializer,
-    GenresSerializer,
-    RegisterDataSerializer,
-    TitleReadSerializer,
-    TitleWriteSerializer,
-    TokenSerializer,
-    UserEditSerializer,
-    UserSerializer,
-    CommentSerializer,
-    ReviewSerializer,
-)
-
-from reviews.models import (
-    Categories,
-    Genres,
-    Title
-)
+from .permissions import (IsAdmin, IsAdminModeratorOwnerOrReadOnly,
+                          IsAdminOrReadOnly)
+from .serializers import (CategoriesSerializer, CommentSerializer,
+                          GenresSerializer, RegisterDataSerializer,
+                          ReviewSerializer, TitleReadSerializer,
+                          TitleWriteSerializer, TokenSerializer,
+                          UserEditSerializer, UserSerializer)
 
 
 class GetPostDelViewSet(
