@@ -1,8 +1,8 @@
 FROM python:3.7-slim
 
-WORKDIR /app/api_yamdb/
+RUN mkdir /app
 
-RUN mkdir /app/api_yamdb/
+WORKDIR /app
 
 COPY ./ /app
 
