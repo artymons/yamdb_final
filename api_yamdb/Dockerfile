@@ -1,6 +1,6 @@
 FROM python:3.7-slim
 
-WORKDIR /api_yamdb/app
+WORKDIR /app/api_yamdb/
 
 RUN mkdir
 
