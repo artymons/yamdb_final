@@ -1,3 +1,4 @@
+![example workflow](https://github.com/artymons/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 ### Описание проекта:
 
 YAMDB - это каталог произведений совмещённый с обширной базой публикаций о них и возможностью оставлять свои отзывы обо всём на свете.
@@ -91,5 +92,3 @@ docker-compose exec web python manage.py createsuperuser
 
 Более подробное описание api можно найти в документации:
 http://127.0.0.1:8000/redoc/
-
-!(https://github.com/artymons/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)

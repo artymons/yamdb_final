@@ -1,10 +1,12 @@
 import os
 from datetime import timedelta
+from dotenv import load_dotenv
+load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-SECRET_KEY = 'p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs'
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 
 DEBUG = False
@@ -97,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = os.getenv('TIME_ZONE', default='UTC')
 
 USE_I18N = True
 
@@ -107,8 +109,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS необходимо закомментировать или удалить
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
@@ -120,6 +121,20 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=10),
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
+EMAIL_HOST = str(os.getenv('EMAIL_HOST'))
+
+EMAIL_PORT = str(os.getenv('EMAIL_PORT'))
+
+EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))
+
+EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))
+
+EMAIL_USE_TLS = str(os.getenv('EMAIL_USE_TLS'))
+
+EMAIL_USE_SSL = str(os.getenv('EMAIL_USE_SSL'))
+
+SERVER_EMAIL = str(os.getenv('EMAIL_HOST_USER'))
+
+DEFAULT_FROM_EMAIL = str(os.getenv('EMAIL_HOST_USER'))
